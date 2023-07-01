@@ -1,0 +1,11 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    container_name: istoque-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: laravel
+      MYSQL_DATABASE: laravel
+    ports:
+      - "3306:3306"
+    restart: always
