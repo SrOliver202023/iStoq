@@ -1,3 +1,5 @@
+![CoverLarge](https://github.com/SrOliver202023/iStoq/assets/69410605/89cfae50-d4d2-4568-9f8d-f9fb06596cf8)
+
 > # Models
 ### User
   * idUser
