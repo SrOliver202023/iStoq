@@ -32,8 +32,8 @@ export default function Login({ status, canResetPassword }: { status?: string, c
             <Head title="Sign In" />
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
-            <section className='z-0 flex  max-w-[860px] bg-transparent shadow-[0_0_125px_0_rgba(0,0,0,0.30)] rounded-full'>
-                <article className='bg-primary-500 p-5 w-1/2 rounded-l'>
+            <section className='z-0 flex  max-w-[860px] bg-transparent shadow-[0_0_125px_0_rgba(0,0,0,0.30)] rounded'>
+                <article className='bg-primary-500 p-5 w-1/2 rounded-l max-md:hidden'>
                     <div className='gap-1 flex flex-col border-b pb-2 border-primary-300'>
                         <h2 className='text-primary-100 text-2xl font-medium'>💈 Manage your <br />product stock</h2>
                         <p className='text-primary-200'>
@@ -46,7 +46,7 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                         <img className='w-48 h-4w-48' src="assets/CheckingBoxesCuate.svg" alt="CheckingBoxesCuate.svg" />
                     </div>
                 </article>
-                <form onSubmit={submit} className='bg-base-0 p-5 w-1/2 rounded-r flex flex-col gap-2'>
+                <form onSubmit={submit} className='bg-base-0 p-5 w-1/2 max-md:w-full rounded-r max-md:rounded flex flex-col gap-2'>
 
                     <div>
                         <h2 className='text-lg text-primary-500 font-normal'>
