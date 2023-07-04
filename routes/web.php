@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\ProductController;
 
 
 Route::get('/', function () {
@@ -23,12 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-Route::get('/products', function () {
-    return Inertia::render('Products');
-})->middleware(['auth', 'verified'])->name('products');
-
-
 Route::resource('suppliers', SupplierController::class)->middleware('auth','verified');
+Route::resource('products', ProductController::class)->middleware('auth','verified');
 
 require __DIR__.'/auth.php';

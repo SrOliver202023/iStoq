@@ -15,7 +15,7 @@ export default function Sidebar() {
       <nav className='flex flex-col items-center justify-between h-full'>
 
         <ul className='menu-xs text-primary-100 flex flex-col gap-2'>
-          <Link href={route('products')} >
+          <Link href={route('products.index')} >
             <li>
               <button data-tip="Products" className={`tooltip tooltip-secondary tooltip-right p-2.5 rounded-md justify-center flex ${route().current()?.toString().includes('products') ? 'bg-primary-400 text-primary-100 shadow' : 'text-primary-200'}`}>
                 <BsBoxSeam size={20} />
