@@ -129,25 +129,26 @@ export default function Index({ auth, suppliers }: PageProps & SuppliersPaginati
 
               <div className='flex items-center gap-4'>
 
-                <Link href={suppliers.prev_page_url}>
-                  <button disabled={!suppliers.prev_page_url}
-                    className='btn btn-sm btn-circle hover:bg-primary-400 hover:text-white text-2xl  flex justify-center items-center text-primary-400 rounded-full border-2 border-primary-100'>
-                    {`<`}
-                  </button>
-                </Link>
+                <button
+                  onClick={() => router.get(suppliers.prev_page_url)}
+                  disabled={!suppliers.prev_page_url}
+                  className='btn btn-sm btn-circle hover:bg-primary-400 hover:text-white text-2xl  flex justify-center items-center text-primary-400 rounded-full border-2 border-primary-100'>
+                  {`<`}
+                </button>
 
                 <div className='flex gap-1 text-primary-400'>
                   <span className='font-semibold'>{suppliers.current_page}</span>
                   <span>Of</span>
                   <span className='font-semibold'>{suppliers.last_page}</span>
                 </div>
-                <Link href={suppliers.next_page_url}>
-                  <button
-                    disabled={!suppliers.next_page_url}
-                    className='btn btn-sm btn-circle hover:bg-primary-400 hover:text-white text-2xl  flex justify-center items-center text-primary-400 rounded-full border-2 border-primary-100'>
-                    {`>`}
-                  </button>
-                </Link>
+
+                <button
+                  onClick={() => router.get(suppliers.next_page_url)}
+                  disabled={!suppliers.next_page_url}
+                  className='btn btn-sm btn-circle hover:bg-primary-400 hover:text-white text-2xl  flex justify-center items-center text-primary-400 rounded-full border-2 border-primary-100'>
+                  {`>`}
+                </button>
+
               </div>
 
 
