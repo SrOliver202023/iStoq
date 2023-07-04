@@ -124,7 +124,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                 </header>
             )} */}
 
-            <main className='absolute left-16 z-0'>{children}</main>
+            <main className='w-full overflow-y-scroll'>{children}</main>
         </div>
     );
 }
