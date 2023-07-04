@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\SupplierController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,18 +27,20 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/products', function () {
-    return Inertia::render('Products');
-})->middleware(['auth', 'verified'])->name('products');
-
-Route::get('/suppliers', function () {
-    return Inertia::render('Suppliers');
-})->middleware(['auth', 'verified'])->name('suppliers');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::get('/products', function () {
+    return Inertia::render('Products');
+})->middleware(['auth', 'verified'])->name('products');
+
+
+Route::resource('suppliers', SupplierController::class)
+->only(['index','store','show','edit','update'])
+->middleware('auth','verified');
 
 require __DIR__.'/auth.php';
