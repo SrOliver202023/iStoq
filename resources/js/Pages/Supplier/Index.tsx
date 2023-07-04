@@ -48,7 +48,7 @@ export default function Index({ auth, suppliers }: PageProps & SuppliersPaginati
 
         <section>
           <div>
-            <div className="overflow-x-auto h-[79vh] shadow-[0_0_10px_0_rgba(0,0,0,0.10)] rounded-lg">
+            <div className="overflow-x-auto h-[75vh] shadow-[0_0_10px_0_rgba(0,0,0,0.10)] rounded-lg">
               <table className="table table-pin-rows">
                 <thead className='!bg-base-100'>
                   <tr>
@@ -76,11 +76,9 @@ export default function Index({ auth, suppliers }: PageProps & SuppliersPaginati
                           <BiSitemap size={20} />
                         </button>
 
-                        <Link href={`suppliers/${supplier.id}`}>
-                          <button>
+                        <button onClick={() => router.get(`suppliers/${supplier.id}`)}>
                             <FiEdit size={20} />
-                          </button>
-                        </Link>
+                        </button>
 
                         <button onClick={() => setTransModalIsOpen(true)}>
                           <FiTrash size={20} />
