@@ -22,7 +22,7 @@ export default function Edit({ auth, supplier }: PageProps & SupplierProps) {
 
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    put(route('suppliers.update', 12), { onSuccess: () => reset() });
+    put(route('suppliers.update', supplier.id), { onSuccess: () => reset() });
   };
 
   return (
