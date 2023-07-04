@@ -3,26 +3,28 @@ import { BiUserPin } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
 import { Link } from '@inertiajs/react';
 import { useState } from 'react';
+import ApplicationLogo from './ApplicationLogo';
 
 export default function Sidebar() {
   const [modalInterrogationIsOpen, setModalInterrogationIsOpen] = useState(false)
 
   return (
-    <div className="h-screen bg-primary-600 p-2 w-fit flex flex-col gap-10 fixed z-10">
-      <img className="w-14 h-w-14" src="assets/iStoq-Logo.svg" alt="iStoq-Logo.svg" />
+    <div className="h-screen bg-primary-600 p-2 w-fit flex flex-col gap-10 stick z-10">
+      <img className={`w-14 h-w-14`} src={'/assets/iStoq-Logo.svg'} alt="iStoq-Logo.svg" />
+
       <nav className='flex flex-col items-center justify-between h-full'>
 
         <ul className='menu-xs text-primary-100 flex flex-col gap-2'>
           <Link href={route('products')} >
             <li>
-              <button data-tip="Products" className={`tooltip tooltip-secondary tooltip-right p-2.5 rounded-md justify-center flex ${route().current('products') ? 'bg-primary-400 text-primary-100 shadow' : 'text-primary-200'}`}>
+              <button data-tip="Products" className={`tooltip tooltip-secondary tooltip-right p-2.5 rounded-md justify-center flex ${route().current()?.toString().includes('products') ? 'bg-primary-400 text-primary-100 shadow' : 'text-primary-200'}`}>
                 <BsBoxSeam size={20} />
               </button>
             </li>
           </Link>
-          <Link href={route('suppliers')}>
+          <Link href={route('suppliers.index')}>
             <li>
-              <button data-tip="Suppliers" className={`tooltip tooltip-secondary tooltip-right p-2.5 rounded-md justify-center flex ${route().current('suppliers') ? 'bg-primary-400 text-primary-100 shadow' : 'text-primary-200'}`}>
+              <button data-tip="Suppliers" className={`tooltip tooltip-secondary tooltip-right p-2.5 rounded-md justify-center flex ${route().current()?.toString().includes('suppliers') ? 'bg-primary-400 text-primary-100 shadow' : 'text-primary-200'}`}>
                 <BiUserPin size={20} />
               </button>
             </li>
