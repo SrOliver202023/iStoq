@@ -5,6 +5,8 @@ import UpdateProfileInformationForm from './Partials/UpdateProfileInformationFor
 import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 
+import { FaUser } from 'react-icons/fa'
+
 export default function Edit({ auth, mustVerifyEmail, status }: PageProps<{ mustVerifyEmail: boolean, status?: string }>) {
     return (
         <AuthenticatedLayout
@@ -13,9 +15,18 @@ export default function Edit({ auth, mustVerifyEmail, status }: PageProps<{ must
         >
             <Head title="Profile" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+            <div className='w-full p-4 gap-4 flex flex-col'>
+                <header className='flex w-full items-center justify-between'>
+                    <div className='flex items-center gap-2'>
+                        <span className='text-primary-500'>
+                            <FaUser size={36} />
+                        </span>
+                        <h1 className='font-semibold text-2xl text-base-600'>Profile</h1>
+                    </div>
+                </header>
+
+                <div className="max-w-md space-y-4">
+                    <div className=" bg-base-0 shadow sm:rounded-lg p-4 w-fit">
                         <UpdateProfileInformationForm
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}
@@ -23,13 +34,13 @@ export default function Edit({ auth, mustVerifyEmail, status }: PageProps<{ must
                         />
                     </div>
 
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div className="p-4 max-w-md bg-base-0 shadow sm:rounded-lg w-fit">
                         <UpdatePasswordForm className="max-w-xl" />
                     </div>
-
+                    {/*
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <DeleteUserForm className="max-w-xl" />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </AuthenticatedLayout>
