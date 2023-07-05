@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: #FFFFFF;
+  background: #A17DDD;
+}
+
+::selection {
+  color: #FFFFFF;
+  background: #A17DDD;
+}
