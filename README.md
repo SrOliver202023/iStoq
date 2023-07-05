@@ -21,7 +21,11 @@
 * User must be able to delete products
 * User must be able to search for products
 
-
+### Requeriments:
+* WSL or Linux
+* Docker and Docker composer or SGBD Mysql
+* php-cli v8.1
+* nodejs v.18.16.1
 
 ## Install nodejs
     sudo apt update
@@ -40,7 +44,8 @@
 ## Install dependences
     npm install
     composer install
-
+## Up docker-compose
+    docker-composer up -d
 ## Run as dev
     npm run dev
     php artisan serve
