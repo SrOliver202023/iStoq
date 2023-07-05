@@ -5,7 +5,7 @@ services:
     container_name: istoque-mysql
     environment:
       MYSQL_ROOT_PASSWORD: laravel
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: istoq
     ports:
       - "3306:3306"
     restart: always
