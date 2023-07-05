@@ -1,36 +1,5 @@
 ![CoverLarge](https://github.com/SrOliver202023/iStoq/assets/69410605/89cfae50-d4d2-4568-9f8d-f9fb06596cf8)
 
-> # Models
-### User
-  * idUser
-  * name
-  * email
-  * password
-
-### Product
-  * idProduct
-  * productName
-  * externalCode
-  * description
-  * price
-  * quantity
-  * imageUrl
-  * imageMode
-  * createdAt
-  * updatedAt
-  * createdByUser
-  * updatedByUser
-	
-### Supplier	
-  * idSupplier
-  * supplierName
-  * email
-  * phone
-  * codCnpj
-  * address
-  * createdAt
-  * updatedAt
-
 > # Features
 
 ### Auth
@@ -51,5 +20,29 @@
 * User must be able to update products
 * User must be able to delete products
 * User must be able to search for products
+
+
+
+## Install nodejs
+    sudo apt update
+    curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    sudo apt install -y nodejs
+    sudo npm install -g n
+    sudo n 18.16.1
+
+## Install php
+    sudo apt install php-cli
+    sudo apt-get install php-xml
+
+## Install composer
+    sudo apt install composer
+
+## Install dependences
+    npm install
+    composer install
+
+## Run as dev
+    npm run dev
+    php artisan serve
 
 
