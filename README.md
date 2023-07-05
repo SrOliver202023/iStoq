@@ -1,4 +1,4 @@
-[![CoverLarge](https://github.com/SrOliver202023/iStoq/assets/69410605/89cfae50-d4d2-4568-9f8d-f9fb06596cf8)](https://user-images.githubusercontent.com/69410605/251194726-4e0a732e-4af5-4935-9bcc-1808d07c0d66.png)
+<img src="https://user-images.githubusercontent.com/69410605/251194726-4e0a732e-4af5-4935-9bcc-1808d07c0d66.png"/>
 
 > # Features
 
