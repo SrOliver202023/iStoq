@@ -16,7 +16,7 @@ export default function Create({ auth, suppliers }: PageProps & { suppliers: Sup
     externalCode: '',
     quantity: 0,
     price: 0,
-    supplierId: 0,
+    supplierId: undefined,
     imageUrl: null
   });
 
@@ -138,9 +138,9 @@ export default function Create({ auth, suppliers }: PageProps & { suppliers: Sup
                   name="supplierId"
                   className="select mt-1 font-normal w-full border-primary-200 placeholder:text-primary-200 text-base-500 focus:border-primary-200 !ring-primary-200 !shadow-none"
                   onChange={(e) => setData('supplierId', Number(e.target.value))}
-                  value={data.supplierId}
+                  defaultValue={data?.supplierId ? data?.supplierId : undefined}
                 >
-                  <option key={0} value={0} disabled>Select Supplier</option>
+                  <option key={0} value={undefined}>Select Supplier</option>
 
                   {suppliers.map(supplier => (
                     <option key={supplier.id} value={supplier.id}>{supplier.supplierName}</option>

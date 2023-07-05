@@ -17,12 +17,12 @@ export default function Edit({ auth, product, suppliers }: PageProps & Suppliers
     imageUrl: product.imageUrl || '',
     quantity: product.quantity || 0,
     price: product.price || 0,
-    supplierId: product.supplierId || 0
+    supplierId: product.supplierId || undefined,
   });
 
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    put(route('products.update', product.id), { onSuccess: () => reset() });
+    put(route('products.update', product.id), { forceFormData: false, onSuccess: () => reset() });
   };
 
   return (
@@ -42,107 +42,133 @@ export default function Edit({ auth, product, suppliers }: PageProps & Suppliers
           </div>
         </header>
 
-        <form onSubmit={submit} className='w-full bg-base-0 max-w-md flex flex-col gap-2 shadow-[0_0_10px_0_rgba(0,0,0,0.10)] p-4 rounded-lg'>
-          <div className='w-full flex flex-col gap-2'>
+        <form
+          onSubmit={submit}
+          // encType='multipart/form-data'
+          className='w-full bg-base-0 max-w-4xl flex flex-col gap-2 shadow-[0_0_10px_0_rgba(0,0,0,0.10)] p-4 rounded-lg'
+        >
 
-            <div className='w-full'>
-              <InputLabel htmlFor="productName" value="Product Name" />
-              <TextInput
-                id="productName"
-                name="Product Name"
-                placeholder="Product Name"
-                value={data?.productName}
-                className="mt-1 block w-full"
-                autoComplete="productName"
-                isFocused={true}
-                onChange={(e) => setData('productName', e.target.value)}
-                required
-              />
-              <InputError message={errors.productName} className="mt-2" />
-            </div>
+          <div className='w-full flex gap-4'>
 
-            <div className='w-full'>
-              <InputLabel htmlFor="externalCode" value="External code" />
-              <TextInput
-                id="externalCode"
-                name="External code"
-                placeholder="External code"
-                value={data?.externalCode}
-                className="mt-1 block w-full"
-                autoComplete="externalCode"
-                isFocused={true}
-                onChange={(e) => setData('externalCode', e.target.value)}
-              />
-              <InputError message={errors.externalCode} className="mt-2" />
-            </div>
+            <div className='w-1/2 flex flex-col gap-2'>
 
-            <div className='w-full'>
-              <InputLabel htmlFor="description" value="Description" className='mt-1' />
-              <textarea
-                id="description"
-                name="description"
-                placeholder="description..."
-                value={data?.description}
-                className='w-full resize-none rounded-md border-primary-200 placeholder:text-primary-200 text-base-500 focus:border-primary-200 !ring-primary-200 !shadow-none'
-                onChange={(e) => setData('description', e.target.value)}
-                required
-              />
-              <InputError message={errors.externalCode} className="mt-2" />
-            </div>
-
-            <div className='flex gap-2'>
               <div className='w-full'>
-                <InputLabel htmlFor="price" value="Price" />
+                <InputLabel htmlFor="productName" value="Product Name" />
                 <TextInput
-                  type="number"
-                  id="price"
-                  name="Price"
-                  placeholder="12,54"
-                  value={data?.price > 0 ? data.price : ''}
+                  id="productName"
+                  name="Product Name"
+                  placeholder="Product Name"
+                  value={data?.productName}
                   className="mt-1 block w-full"
+                  autoComplete="productName"
                   isFocused={true}
-                  onChange={(e) => setData('price', Number(e.target.value))}
+                  onChange={(e) => setData('productName', e.target.value)}
                   required
                 />
-                <InputError message={errors.price} className="mt-2" />
+                <InputError message={errors.productName} className="mt-2" />
               </div>
 
               <div className='w-full'>
-                <InputLabel htmlFor="quantity" value="Quantity" />
+                <InputLabel htmlFor="externalCode" value="External code" />
                 <TextInput
-                  type="number"
-                  id="quantity"
-                  name="Quantity"
-                  placeholder="12"
-                  value={data?.quantity > 0 ? data.quantity : ''}
+                  id="externalCode"
+                  name="External code"
+                  placeholder="External code"
+                  value={data?.externalCode}
                   className="mt-1 block w-full"
+                  autoComplete="externalCode"
                   isFocused={true}
-                  onChange={(e) => setData('quantity', Number(e.target.value))}
+                  onChange={(e) => setData('externalCode', e.target.value)}
+                />
+                <InputError message={errors.externalCode} className="mt-2" />
+              </div>
+
+              <div className='w-full'>
+                <InputLabel htmlFor="description" value="Description" className='mt-1' />
+                <textarea
+                  id="description"
+                  name="description"
+                  placeholder="description..."
+                  value={data?.description}
+                  className='w-full resize-none rounded-md border-primary-200 placeholder:text-primary-200 text-base-500 focus:border-primary-200 !ring-primary-200 !shadow-none'
+                  onChange={(e) => setData('description', e.target.value)}
                   required
                 />
-                <InputError message={errors.quantity} className="mt-2" />
+                <InputError message={errors.externalCode} className="mt-2" />
+              </div>
+
+              <div className='flex gap-2'>
+                <div className='w-full'>
+                  <InputLabel htmlFor="price" value="Price" />
+                  <TextInput
+                    type="number"
+                    id="price"
+                    name="Price"
+                    placeholder="12,54"
+                    value={data?.price > 0 ? data.price : ''}
+                    className="mt-1 block w-full"
+                    isFocused={true}
+                    onChange={(e) => setData('price', Number(e.target.value))}
+                    required
+                  />
+                  <InputError message={errors.price} className="mt-2" />
+                </div>
+
+                <div className='w-full'>
+                  <InputLabel htmlFor="quantity" value="Quantity" />
+                  <TextInput
+                    type="number"
+                    id="quantity"
+                    name="Quantity"
+                    placeholder="12"
+                    value={data?.quantity > 0 ? data.quantity : ''}
+                    className="mt-1 block w-full"
+                    isFocused={true}
+                    onChange={(e) => setData('quantity', Number(e.target.value))}
+                    required
+                  />
+                  <InputError message={errors.quantity} className="mt-2" />
+                </div>
+              </div>
+
+              <div className='w-full'>
+                <InputLabel htmlFor="supplierId" value="Supplier" />
+                <select
+                  id="supplierId"
+                  name="supplierId"
+                  className="select mt-1 font-normal w-full border-primary-200 placeholder:text-primary-200 text-base-500 focus:border-primary-200 !ring-primary-200 !shadow-none"
+                  onChange={(e) => setData('supplierId', Number(e.target.value))}
+                  defaultValue={data?.supplierId ? data?.supplierId : undefined}
+                >
+                  <option key={0} value={undefined}>Select Supplier</option>
+
+                  {suppliers.map(supplier => (
+                    <option key={supplier.id} value={supplier.id}>{supplier.supplierName}</option>
+                  ))}
+
+                </select>
+                <InputError message={errors.supplierId} className="mt-2" />
               </div>
             </div>
 
-            <div className='w-full'>
-              <InputLabel htmlFor="supplierId" value="Supplier" />
-              <select
-                id="supplierId"
-                name="supplierId"
-                className="select mt-1 font-normal w-full border-primary-200 placeholder:text-primary-200 text-base-500 focus:border-primary-200 !ring-primary-200 !shadow-none"
-                onChange={(e) => setData('supplierId', Number(e.target.value))}
-                value={data.supplierId}
-              >
-                <option key={0} value={0} disabled>Select Supplier</option>
 
-                {suppliers.map(supplier => (
-                  <option key={supplier.id} value={supplier.id}>{supplier.supplierName}</option>
-                ))}
+            <label htmlFor="imageUrl" className='cursor-pointer p-2 border-dotted flex items-center justify-center flex-col border-spacing-1 rounded-md border-2 border-primary-200 w-1/2'>
+              <h3 className='text-2xl font-medium text-base-600'>Upload image</h3>
+              <img className='h-56' src="/assets/ImageUploadBro.svg" alt="ImageUploadBro.svg" />
+              <input
+                disabled
+                id='imageUrl'
+                name='imageUrl'
+                type="file"
+                className="file-input file-input-sm file-input-bordered file-input-primary max-w-xs"
+                onChange={e => setData('imageUrl', Array.from(e.target.files!)[0])}
+              />
+              <InputError message={errors.imageUrl} className="mt-2" />
+            </label>
 
-              </select>
-              <InputError message={errors.supplierId} className="mt-2" />
-            </div>
           </div>
+
+
 
           <div className='w-full flex gap-4 justify-end pb-2'>
             <Link href={route('products.index')} >
@@ -152,7 +178,7 @@ export default function Edit({ auth, product, suppliers }: PageProps & Suppliers
             </Link>
 
             <PrimaryButton className='font-medium' type='submit'>
-              Save
+              + Add
             </PrimaryButton>
 
           </div>

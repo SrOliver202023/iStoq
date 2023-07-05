@@ -44,7 +44,7 @@ class ProductController extends Controller
             'description' => 'nullable|string|max:255',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
-            'supplierId' => 'required|integer',
+            'supplierId' => 'required|numeric',
             'created_at'  => 'nullable|timestamp',
             'updated_at'  => 'nullable|timestamp',
             'imageUrl' => 'nullable|image|max:2048',

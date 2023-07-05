@@ -79,8 +79,8 @@ export type ProductDTO = {
     description: string
     price: number
     quantity: number
-    imageUrl: File | null
-    supplierId: number
+    imageUrl: File | null | string
+    supplierId: number | undefined
 }
 
 
