@@ -15,7 +15,7 @@ export default function Create({ auth }: PageProps) {
   const { data, setData, post, processing, errors, reset } = useForm<SupplierDTO>({
     cnpj: '',
     email: '',
-    nameSupplier: '',
+    supplierName: '',
     phone: '',
     address: ''
   });
@@ -49,14 +49,14 @@ export default function Create({ auth }: PageProps) {
               id="supplierName"
               name="Supplier Name"
               placeholder="Supplier Name"
-              value={data?.nameSupplier}
+              value={data?.supplierName}
               className="mt-1 block w-full"
               autoComplete="supplierName"
               isFocused={true}
-              onChange={(e) => setData('nameSupplier', e.target.value)}
+              onChange={(e) => setData('supplierName', e.target.value)}
               required
             />
-            <InputError message={errors.nameSupplier} className="mt-2" />
+            <InputError message={errors.supplierName} className="mt-2" />
           </div>
 
           <div className='w-full'>

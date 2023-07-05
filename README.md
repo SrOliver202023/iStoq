@@ -9,7 +9,7 @@
 
 ### Product
   * idProduct
-  * nameProduct
+  * productName
   * externalCode
   * description
   * price
@@ -23,7 +23,7 @@
 	
 ### Supplier	
   * idSupplier
-  * nameSupplier
+  * supplierName
   * email
   * phone
   * codCnpj

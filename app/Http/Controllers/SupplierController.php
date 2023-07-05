@@ -19,6 +19,7 @@ class SupplierController extends Controller
     $query->orderBy($orderBy, $orderMode);
     $suppliers = $query->paginate($limit);
     $suppliers->appends($request->query());
+
     return Inertia::render('Supplier/Index', ['suppliers' => $suppliers]);
   }
 
@@ -39,11 +40,11 @@ class SupplierController extends Controller
     return Inertia::render('Supplier/Edit', ['supplier' => $supplier]);
   }
 
-  public function edit(Supplier $supplier){
+  public function edit(Supplier $supplier, Request $request){
     return Inertia::render('Supplier/Edit',[
       'supplier'=>[
         'id'=> $supplier-> id,
-        'nameSupplier' => $supplier-> nameSupplier,
+        'suppplierName' => $supplier-> suppplierName,
         'email' =>$supplier-> email,
         'phone' => $supplier-> phone,
         'cnpj' => $supplier-> cnpj,

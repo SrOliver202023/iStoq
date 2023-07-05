@@ -15,7 +15,7 @@ export default function Edit({ auth, supplier }: PageProps & SupplierProps) {
   const { data, setData, post, put, processing, errors, reset } = useForm<SupplierDTO>({
     cnpj: supplier.cnpj || '',
     email: supplier.email || '',
-    nameSupplier: supplier.nameSupplier || '',
+    supplierName: supplier.supplierName || '',
     phone: supplier.phone || '',
     address: supplier.address || ''
   });
@@ -51,14 +51,14 @@ export default function Edit({ auth, supplier }: PageProps & SupplierProps) {
               id="supplierName"
               name="Supplier Name"
               placeholder="Supplier Name"
-              value={data?.nameSupplier}
+              value={data?.supplierName}
               className="mt-1 block w-full"
               autoComplete="supplierName"
               isFocused={true}
-              onChange={(e) => setData('nameSupplier', e.target.value)}
+              onChange={(e) => setData('supplierName', e.target.value)}
               required
             />
-            <InputError message={errors.nameSupplier} className="mt-2" />
+            <InputError message={errors.supplierName} className="mt-2" />
           </div>
 
           <div className='w-full'>
