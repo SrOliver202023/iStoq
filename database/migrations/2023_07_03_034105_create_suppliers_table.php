@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->string('nameSupplier');
+            $table->string('supplierName');
             $table->string('email');
             $table->string('phone');
             $table->string('cnpj');
             $table->string('address');
+            // $table->bigInteger('userId')->unsigned();
+            // $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('suppliers');
     }
 };

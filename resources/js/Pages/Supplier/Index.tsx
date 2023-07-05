@@ -48,8 +48,8 @@ export default function Index({ auth, suppliers }: PageProps & SuppliersPaginati
 
         <section>
           <div>
-            <div className="overflow-x-auto h-[79vh] shadow-[0_0_10px_0_rgba(0,0,0,0.10)] rounded-lg">
-              <table className="table table-pin-rows">
+            <div className="overflow-x-auto h-[75vh] shadow-[0_0_10px_0_rgba(0,0,0,0.10)] rounded-lg">
+              <table className="table table-pin-rows text-center">
                 <thead className='!bg-base-100'>
                   <tr>
                     <th className='rounded-tl-lg text-base-300 font-medium'>ID</th>
@@ -65,50 +65,48 @@ export default function Index({ auth, suppliers }: PageProps & SuppliersPaginati
                   {suppliers.data.map(supplier => (
                     <tr key={supplier.id} className='hover'>
                       <th className='font-normal text-base-500'>{supplier.id}</th>
-                      <th className='font-normal text-base-500'>{supplier.nameSupplier}</th>
+                      <th className='font-normal text-base-500'>{supplier.supplierName}</th>
                       <th className='font-normal text-base-500'>{supplier.email}</th>
                       <th className='font-normal text-base-500'>{supplier.phone}</th>
                       <th className='font-normal text-base-500'>{supplier.cnpj}</th>
                       <th className='font-normal text-base-500'>{supplier.address}</th>
                       <th className='font-normal text-base-500 flex items-center gap-2'>
+                        <div className='flex m-auto gap-2'>
+                          <button onClick={() => router.get(`products?supplierId=${supplier.id}`)}>
+                            <BiSitemap size={20} />
+                          </button>
 
-                        <button>
-                          <BiSitemap size={20} />
-                        </button>
-
-                        <Link href={`suppliers/${supplier.id}`}>
-                          <button>
+                          <button onClick={() => router.get(`suppliers/${supplier.id}`)}>
                             <FiEdit size={20} />
                           </button>
-                        </Link>
 
-                        <button onClick={() => setTransModalIsOpen(true)}>
-                          <FiTrash size={20} />
-                        </button>
+                          <button onClick={() => setTransModalIsOpen(true)}>
+                            <FiTrash size={20} />
+                          </button>
 
-                        <dialog id="my_modal_2" className="modal" open={trashModalIsOpen}>
-                          <form method="dialog" className="modal-box shadow-sm rounded-lg max-w-sm">
-                            <h3 className="font-bold text-lg flex items-center gap-2">
-                              <span className='text-error'><FiTrash size={28} /></span>
-                              Supplier exclusion
-                            </h3>
-                            <p className="py-4">
-                              All data related to that supplier will be lost, do you really want to continue?
-                            </p>
-                            <div className="flex w-full gap-2 justify-end">
-                              <button
-                                className='btn btn-sm btn-outline border-none'
-                                onClick={() => setTransModalIsOpen(false)}>Cancel</button>
-                              <button
-                                className='btn btn-sm btn-error btn-outline'
-                                onClick={() => handleTrashModal(supplier.id)}>Confirm</button>
-                            </div>
-                          </form>
-                          <form method="dialog" className="modal-backdrop bg-gray-900 bg-opacity-10">
-                            <button onClick={() => setTransModalIsOpen(false)}></button>
-                          </form>
-                        </dialog>
-
+                          <dialog id="my_modal_2" className="modal" open={trashModalIsOpen}>
+                            <form method="dialog" className="modal-box shadow-sm rounded-lg max-w-sm">
+                              <h3 className="font-bold text-lg flex items-center gap-2">
+                                <span className='text-error'><FiTrash size={28} /></span>
+                                Supplier exclusion
+                              </h3>
+                              <p className="py-4">
+                                All data related to that supplier will be lost, do you really want to continue?
+                              </p>
+                              <div className="flex w-full gap-2 justify-end">
+                                <button
+                                  className='btn btn-sm btn-outline border-none'
+                                  onClick={() => setTransModalIsOpen(false)}>Cancel</button>
+                                <button
+                                  className='btn btn-sm btn-error btn-outline'
+                                  onClick={() => handleTrashModal(supplier.id)}>Confirm</button>
+                              </div>
+                            </form>
+                            <form method="dialog" className="modal-backdrop bg-gray-900 bg-opacity-50">
+                              <button onClick={() => setTransModalIsOpen(false)}></button>
+                            </form>
+                          </dialog>
+                        </div>
                       </th>
                     </tr>
                   ))}
@@ -131,25 +129,26 @@ export default function Index({ auth, suppliers }: PageProps & SuppliersPaginati
 
               <div className='flex items-center gap-4'>
 
-                <Link href={suppliers.prev_page_url}>
-                  <button disabled={!suppliers.prev_page_url}
-                    className='btn btn-sm btn-circle hover:bg-primary-400 hover:text-white text-2xl  flex justify-center items-center text-primary-400 rounded-full border-2 border-primary-100'>
-                    {`<`}
-                  </button>
-                </Link>
+                <button
+                  onClick={() => router.get(suppliers.prev_page_url)}
+                  disabled={!suppliers.prev_page_url}
+                  className='btn btn-sm btn-circle hover:bg-primary-400 hover:text-white text-2xl  flex justify-center items-center text-primary-400 rounded-full border-2 border-primary-100'>
+                  {`<`}
+                </button>
 
                 <div className='flex gap-1 text-primary-400'>
                   <span className='font-semibold'>{suppliers.current_page}</span>
                   <span>Of</span>
                   <span className='font-semibold'>{suppliers.last_page}</span>
                 </div>
-                <Link href={suppliers.next_page_url}>
-                  <button
-                    disabled={!suppliers.next_page_url}
-                    className='btn btn-sm btn-circle hover:bg-primary-400 hover:text-white text-2xl  flex justify-center items-center text-primary-400 rounded-full border-2 border-primary-100'>
-                    {`>`}
-                  </button>
-                </Link>
+
+                <button
+                  onClick={() => router.get(suppliers.next_page_url)}
+                  disabled={!suppliers.next_page_url}
+                  className='btn btn-sm btn-circle hover:bg-primary-400 hover:text-white text-2xl  flex justify-center items-center text-primary-400 rounded-full border-2 border-primary-100'>
+                  {`>`}
+                </button>
+
               </div>
 
 
