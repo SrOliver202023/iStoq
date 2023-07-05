@@ -1,27 +1,31 @@
 <img src="https://user-images.githubusercontent.com/69410605/251194726-4e0a732e-4af5-4935-9bcc-1808d07c0d66.png"/>
 
-> # Features
+### Ui Design
+<a href="https://www.figma.com/file/vqaI0VViFlaYX3dCWjsblc/iStoq?type=design&node-id=0-1&mode=design">
+    Figma
+</a>
 
-### Auth
+# Features
+## Auth
 * It should be possible to create a register
 * It must be possible to login
 * It must be possible for the user to logout
 
-### Supplier
+## Supplier
 * The user must be able to register suppliers
 * User must be able to list suppliers
 * User must be able to update suppliers
 * User must be able to delete suppliers
 * The user must be able to search for suppliers
 
-### Product
+## Product
 * The user must be able to register products
 * User must be able to list products
 * User must be able to update products
 * User must be able to delete products
 * User must be able to search for products
 
-### Requeriments:
+## Requeriments:
 * WSL or Linux
 * Docker and Docker composer or SGBD Mysql
 * php-cli v8.1
